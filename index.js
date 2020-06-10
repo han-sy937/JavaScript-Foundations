@@ -42,7 +42,7 @@ let n1 = Math.pow((1 + monthlyInterestRate), periods);
 
 let monthlyRate = principal * ((monthlyInterestRate * n1)/(n1 - 1));
 
-console.log(monthlyRate);
+console.log(monthlyRate.toFixed(2));
 
 
 
@@ -62,7 +62,7 @@ function mortgageCalculator(){
     let n1 = Math.pow((1 + monthlyInterestRate), periods);
     let monthlyRate = principal * ((monthlyInterestRate * n1)/(n1 - 1));
 
-    return name + ', your monthly rate is ' + monthlyRate;
+    return name + ', your monthly rate is ' + monthlyRate.toFixed(2);
 }
 
 console.log( mortgageCalculator());
@@ -85,7 +85,7 @@ function mortgageCalculator2(P, I, N){
     let n1 = Math.pow((1 + monthlyInterestRate), periods);
     let monthlyRate = principal * ((monthlyInterestRate * n1)/(n1 - 1));
 
-    return monthlyRate;
+    return monthlyRate.toFixed(2);
 }
 
 console.log(mortgageCalculator2(200000, 0.05, 30))
@@ -136,21 +136,23 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 function variableInterestRate(P, I, N){
-    I =+ 0.005;
-
-    for( x = I; x >= 9; x++){
-        let principal = P;
-        let monthlyInterestRate = I/12;
-        let periods = N * 12;
-        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+    I -= 0.02;
+    for(let i = 0; i < 9; i++){
+        // let principal = P;
+        // let monthlyInterestRate = I/12;
+        // let periods = N * 12;
+        // let n1 = Math.pow((1 + monthlyInterestRate), periods);
         let monthlyRate = principal * ((monthlyInterestRate * n1)/(n1 - 1));
-        console.log(name + ' with an interest of ' + I + ', your monthly rate is ' + monthlyRate)
-    }
 
-    
+        console.log(`${name}, with an interest of ${I.toFixed(3)}, your monthly rate is, $${monthlyRate.toFixed(2)}`)
+        I += 0.005;
+        
+        
+    }
 }
 
-console.log (variableInterestRate(200000, 0.04, 30));
+    
+variableInterestRate(200000, 0.04, 30);
 
 
 
@@ -167,4 +169,4 @@ console.log (variableInterestRate(200000, 0.04, 30));
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
 
 
-/* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+// /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) 
